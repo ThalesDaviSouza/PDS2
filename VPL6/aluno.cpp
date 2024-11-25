@@ -21,7 +21,7 @@ float Aluno::getMediaNotas(){
     float total = 0;
     float media = 0;
 
-    for(const& nota : this->notas){
+    for(const int& nota : this->notas){
         total += nota;
     }
 
