@@ -48,7 +48,7 @@ private:
 
 public:
   Retangulo(int alt, int larg, int x, int y)
-  : altura(alt), largura(larg), FiguraGeometrica(x, y) { } 
+  : FiguraGeometrica(x, y), altura(alt), largura(larg) { } 
 
   void Desenha() override {
     FiguraGeometrica::Desenha();
@@ -65,7 +65,7 @@ private:
 
 public:
   Circulo(int raio, int x, int y)
-  : raio(raio), FiguraGeometrica(x, y) { } 
+  : FiguraGeometrica(x, y), raio(raio) { } 
 
   void Desenha() override {
     FiguraGeometrica::Desenha();
@@ -83,7 +83,7 @@ private:
 
 public:
   Triangulo(int altura, int base, int x, int y)
-  : altura(altura), base(base), FiguraGeometrica(x, y) 
+  : FiguraGeometrica(x, y), altura(altura), base(base) 
   { } 
 
   void Desenha() override {
@@ -116,17 +116,17 @@ int main(){
     {
     case 'R':
       cin >> x >> y >> alt >> larg;
-      vetor.push_back(make_unique<Retangulo>(alt, larg, x, y));
+      vetor.push_back(unique_ptr<Retangulo>(new Retangulo(alt, larg, x, y)));
       break;
       
     case 'C':
       cin >> x >> y >> raio;
-      vetor.push_back(make_unique<Circulo>(raio, x, y));
+      vetor.push_back(unique_ptr<Circulo>(new Circulo(raio, x, y)));
       break;
       
     case 'T':
       cin >> x >> y >> base >> altura;
-      vetor.push_back(make_unique<Triangulo>(altura, base, x, y));
+      vetor.push_back(unique_ptr<Triangulo>(new Triangulo(altura, base, x, y)));
       break;
 
     case 'D':
